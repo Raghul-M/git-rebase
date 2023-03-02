@@ -1,0 +1,28 @@
+name: Git Rebase Action
+author: TiaC Systems <info@tiac-systems.net>
+description: 🔝  Rebase branch on independent repository
+branding:
+  icon: 'git-pull-request'
+  color: 'gray-dark'
+inputs:
+  repo:
+    description: GitHub repo slug or full url
+    required: true
+  source_branch:
+    description: Branch name to rebase from
+    required: true
+  destination_branch:
+    description: Branch name to rebase to
+    required: true
+  ssh_private_key:
+    description: SSH key used to authenticate with ssh urls provided (optional if public or https url with authentication)
+    required: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    SSH_PRIVATE_KEY: ${{ inputs.ssh_private_key }}
+  args:
+    - ${{ inputs.repo }}
+    - ${{ inputs.source_branch }}
+    - ${{ inputs.destination_branch }}
