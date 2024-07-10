@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: git-rebase
-        uses: tiacsys/git-rebase@v3
+        uses: tiacsys/git-rebase@v1
         with:
           repo: "org/repository"
           source_branch: "next"
